@@ -96,7 +96,7 @@ static CGFloat const SVPullToRefreshViewHeight = 60;
     float position = 0.50;
     
     CGRect titleFrame = titleLabel.frame;
-    titleFrame.origin.x = ceil(remainingWidth*position+44);
+    titleFrame.origin.x = (CGFloat)ceil(remainingWidth*position+44);
     titleLabel.frame = titleFrame;
     
     CGRect dateFrame = dateLabel.frame;
@@ -104,7 +104,7 @@ static CGFloat const SVPullToRefreshViewHeight = 60;
     dateLabel.frame = dateFrame;
     
     CGRect arrowFrame = arrow.frame;
-    arrowFrame.origin.x = ceil(remainingWidth*position);
+    arrowFrame.origin.x = (CGFloat)ceil(remainingWidth*position);
     arrow.frame = arrowFrame;
 	
     if(infiniteScrollingActionHandler) {
@@ -357,7 +357,7 @@ static CGFloat const SVPullToRefreshViewHeight = 60;
                 
             case SVPullToRefreshStateTriggered:
                 titleLabel.text = NSLocalizedString(@"Release to refresh...",);
-                [self rotateArrow:M_PI hide:NO];
+                [self rotateArrow:(float)M_PI hide:NO];
                 break;
                 
             case SVPullToRefreshStateLoading:
@@ -505,7 +505,7 @@ static char UIScrollViewInfiniteScrollingView;
 	
 	// Gradient Declaration
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
-	CGFloat alphaGradientLocations[] = {0, 0.8};
+	CGFloat alphaGradientLocations[] = {0, 0.8f};
     
 	CGGradientRef alphaGradient = nil;
     if([[[UIDevice currentDevice] systemVersion]floatValue] >= 5){
